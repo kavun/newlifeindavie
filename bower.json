@@ -1,0 +1,24 @@
+{
+  "name": "newlifeindavie",
+  "version": "0.0.0",
+  "authors": [
+    "Kevin Reed <kevin.a.reed@gmail.com>"
+  ],
+  "main": "views/index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.10.2",
+    "roundabout": "2.4.2",
+    "jquery-hoverIntent": "master",
+    "pure": "0.3.0"
+  }
+  
+}
