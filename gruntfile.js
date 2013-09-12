@@ -4,13 +4,13 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-
+		clean: ['dist'],
 		concat: {
 			options: {
 				// define a string to put between each file in the concatenated output
 				separator: '\n'
 			},
-			js: {
+			js_main: {
 				// the files to concatenate
 				src: [
 					'bower_components/jquery/jquery.js',
@@ -23,13 +23,29 @@ module.exports = function(grunt) {
 				// the location of the resulting JS file
 				dest: 'dist/<%= pkg.name %>.js'
 			},
-			css: {
+			js_gallery: {
+				src: [
+					'bower_components/jquery/jquery.js',
+					'bower_components/jquery-galleria/src/galleria.js',
+					'bower_components/jquery-galleria/src/plugins/flickr/galleria.flickr.js',
+					'src/js/gallery.init.js'
+				],
+				dest: 'dist/<%= pkg.name %>.gallery.js'
+			},
+			css_main: {
 				src: [
 					'bower_components/pure/build/pure.css',
 					'src/css/main.css',
 					'src/css/dropdown.css'
 				],
 				dest: 'dist/<%= pkg.name %>.css'
+			},
+			css_gallery: {
+				src: [
+					'bower_components/pure/build/pure.css',
+					'src/css/gallery.css'
+				],
+				dest: 'dist/<%= pkg.name %>.gallery.css'
 			}
 		},
 
@@ -40,23 +56,43 @@ module.exports = function(grunt) {
 			},
 			my_target: {
 				files: {
-					'dist/<%= pkg.name %>.min.js': ['<%= concat.js.dest %>']
+					'dist/<%= pkg.name %>.min.js': ['<%= concat.js_main.dest %>']
+				}
+			},
+			my_target_2: {
+				files: {
+					'dist/<%= pkg.name %>.gallery.min.js': ['<%= concat.js_gallery.dest %>']
 				}
 			}
 		},
 
 		cssmin: {
-			options: {
-				report: 'gzip'
-			},
+			min_main: {
+				options: {
+					report: 'gzip'
+				},
 
-			files: {
-				expand: true,
-				cwd: 'dist/',
-				src: ['*.css', '!*.min.css'],
-				dest: 'dist/',
-				ext: '.min.css'
+				files: {
+					'dist/<%= pkg.name %>.css': [
+						'bower_components/pure/build/pure.css',
+						'src/css/main.css',
+						'src/css/dropdown.css'
+					]
+				}
+			},
+			min_gallery: {
+				options: {
+					report: 'gzip'
+				},
+
+				files: {
+					'dist/<%= pkg.name %>.gallery.css': [
+						'bower_components/pure/build/pure.css',
+						'src/css/gallery.css'
+					]
+				}
 			}
+			
 		},
 
 		jshint: {
@@ -88,6 +124,6 @@ module.exports = function(grunt) {
 
 	});
 
-	grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'cssmin']);
+	grunt.registerTask('default', ['clean', 'jshint', 'concat', 'uglify']);
 
 };
