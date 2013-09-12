@@ -1,5 +1,8 @@
 # New Life in Davie
 
+[![Dependency Status](https://david-dm.org/kavun/newlifeindavie.png)](https://david-dm.org/kavun/newlifeindavie)
+[![devDependency Status](https://david-dm.org/kavun/newlifeindavie/dev-status.png)](https://david-dm.org/kavun/newlifeindavie#info=devDependencies)
+
 ### Installation
 
 - install [node](http://nodejs.org/)
