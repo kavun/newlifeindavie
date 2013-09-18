@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 				// define a string to put between each file in the concatenated output
 				separator: '\n'
 			},
-			js_main: {
+			jsMain: {
 				// the files to concatenate
 				src: [
 					'bower_components/jquery/jquery.js',
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 				// the location of the resulting JS file
 				dest: 'dist/<%= pkg.name %>.js'
 			},
-			js_gallery: {
+			jsGallery: {
 				src: [
 					'bower_components/jquery/jquery.js',
 					'bower_components/jquery-galleria/src/galleria.js',
@@ -32,7 +32,21 @@ module.exports = function(grunt) {
 				],
 				dest: 'dist/<%= pkg.name %>.gallery.js'
 			},
-			css_main: {
+			jsSimpleGallery: {
+				src: [
+					'bower_components/jquery/jquery.js',
+					'bower_components/jquery-galleria/src/galleria.js',
+					'bower_components/jquery-galleria/src/plugins/flickr/galleria.flickr.js',
+					'bower_components/jquery-galleria/src/themes/classic/galleria.classic.js',
+					'src/js/simpleGallery.init.js'
+				],
+				dest: 'dist/<%= pkg.name %>.simpleGallery.js'
+			},
+			cssIndex: {
+				src: ['bower_components/pure/build/pure.css'],
+				dest: 'dist/index.css'
+			},
+			cssMain: {
 				src: [
 					'bower_components/pure/build/pure.css',
 					'src/css/main.css',
@@ -40,7 +54,7 @@ module.exports = function(grunt) {
 				],
 				dest: 'dist/<%= pkg.name %>.css'
 			},
-			css_gallery: {
+			cssGallery: {
 				src: [
 					'bower_components/pure/build/pure.css',
 					'src/css/gallery.css'
@@ -54,45 +68,21 @@ module.exports = function(grunt) {
 			// the banner is inserted at the top of the output
 				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
 			},
-			my_target: {
+			uglifyMain: {
 				files: {
-					'dist/<%= pkg.name %>.min.js': ['<%= concat.js_main.dest %>']
+					'dist/<%= pkg.name %>.min.js': ['<%= concat.jsMain.dest %>']
 				}
 			},
-			my_target_2: {
+			uglifyGallery: {
 				files: {
-					'dist/<%= pkg.name %>.gallery.min.js': ['<%= concat.js_gallery.dest %>']
-				}
-			}
-		},
-
-		cssmin: {
-			min_main: {
-				options: {
-					report: 'gzip'
-				},
-
-				files: {
-					'dist/<%= pkg.name %>.css': [
-						'bower_components/pure/build/pure.css',
-						'src/css/main.css',
-						'src/css/dropdown.css'
-					]
+					'dist/<%= pkg.name %>.gallery.min.js': ['<%= concat.jsGallery.dest %>']
 				}
 			},
-			min_gallery: {
-				options: {
-					report: 'gzip'
-				},
-
+			uglifySimpleGallery: {
 				files: {
-					'dist/<%= pkg.name %>.gallery.css': [
-						'bower_components/pure/build/pure.css',
-						'src/css/gallery.css'
-					]
+					'dist/<%= pkg.name %>.simpleGallery.min.js': ['<%= concat.jsSimpleGallery.dest %>']
 				}
 			}
-			
 		},
 
 		jshint: {
@@ -100,11 +90,26 @@ module.exports = function(grunt) {
 			files: ['gruntfile.js', 'src/js/*.js'],
 			// configure JSHint (documented at http://www.jshint.com/docs/)
 			options: {
-				// more options here if you want to override JSHint defaults
 				globals: {
-					jQuery: true,
-					browser: true
-				}
+					nl: true,
+					Galleria: true
+				},
+				node: true,
+				browser: true,
+				esnext: false,
+				es3: true,
+				jquery: true,
+				quotmark: false,
+				smarttabs: true,
+				trailing: true,
+				undef: true,
+				unused: true,
+				eqnull: true,
+				validthis: true,
+				immed: true,
+				expr: true,
+				curly: true,
+				camelcase: true
 			}
 		},
 

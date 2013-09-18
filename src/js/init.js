@@ -6,4 +6,3 @@ nl.roundy = $('.roundy').removeClass('invisible').roundabout({
     autoplayPauseOnHover: true,
     responsive: true
 });
-
