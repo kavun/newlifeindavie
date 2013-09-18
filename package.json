@@ -20,6 +20,6 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "build": "grunt default"
+    "test": "grunt default"
   }
 }
