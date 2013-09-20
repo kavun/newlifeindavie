@@ -92,7 +92,8 @@ module.exports = function(grunt) {
 			options: {
 				globals: {
 					nl: true,
-					Galleria: true
+					Galleria: true,
+					google: true
 				},
 				node: true,
 				browser: true,

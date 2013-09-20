@@ -957,24 +957,6 @@ a.pure-button-selected {
     text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
 
     /*
-    Sets the font stack to fonts known to work properly with the above letter
-    and word spacings. See: https://github.com/yui/pure/issues/41/
-
-    The following font stack makes Pure Grids work on all known environments.
-
-    * FreeSans: Ships with many Linux distros, including Ubuntu
-
-    * Arimo: Ships with Chrome OS. Arimo has to be defined before Helvetica and
-      Arial to get picked up by the browser, even though neither is available
-      in Chrome OS.
-
-    * Droid Sans: Ships with all versions of Android.
-
-    * Helvetica, Arial, sans-serif: Common font stack on OS X and Windows.
-    */
-    font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
-
-    /*
     Use flexbox when possible to avoid `letter-spacing` side-effects.
 
     NOTE: Firefox (as of 25) does not currently support flex-wrap, so the
@@ -1006,14 +988,6 @@ a.pure-button-selected {
     word-spacing: normal;
     vertical-align: top;
     text-rendering: auto;
-}
-
-/*
-Resets the font family back to the OS/browser's default sans-serif font,
-this the same font stack that Normalize.css sets for the `body`.
-*/
-.pure-g [class *= "pure-u"] {
-    font-family: sans-serif;
 }
 
 .pure-u-1,
@@ -1200,24 +1174,6 @@ this the same font stack that Normalize.css sets for the `body`.
     *word-spacing: -0.43em;
 
     /*
-    Sets the font stack to fonts known to work properly with the above letter
-    and word spacings. See: https://github.com/yui/pure/issues/41/
-
-    The following font stack makes Pure Grids work on all known environments.
-
-    * FreeSans: Ships with many Linux distros, including Ubuntu
-
-    * Arimo: Ships with Chrome OS. Arimo has to be defined before Helvetica and
-      Arial to get picked up by the browser, even though neither is available
-      in Chrome OS.
-
-    * Droid Sans: Ships with all versions of Android.
-
-    * Helvetica, Arial, sans-serif: Common font stack on OS X and Windows.
-    */
-    font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
-
-    /*
     Use flexbox when possible to avoid `letter-spacing` side-effects.
 
     NOTE: Firefox (as of 25) does not currently support flex-wrap, so the
@@ -1239,14 +1195,6 @@ this the same font stack that Normalize.css sets for the `body`.
 .opera-only :-o-prefocus,
 .pure-g-r {
     word-spacing: -0.43em;
-}
-
-/*
-Resets the font family back to the OS/browser's default sans-serif font,
-this the same font stack that Normalize.css sets for the `body`.
-*/
-.pure-g-r [class *= "pure-u"] {
-    font-family: sans-serif;
 }
 
 .pure-g-r img {
@@ -1661,17 +1609,18 @@ striping:
     border-bottom-width: 0;
 }
 
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
-
 * {
     box-sizing: border-box;
 }
 
 body {
-    font-family:'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
     margin: 0 auto;
     line-height: 1.7em;
 }
+
 .l-box {
     padding: 1em;
 }
@@ -1683,28 +1632,48 @@ body {
 }
 .header .pure-menu li a:hover, .header .pure-menu li a:focus {
     background: #8BC541;
-    color: #565d64;
+    color: #F6FAEF;
 }
 .header .pure-menu li.pure-menu-open>a {
     background: none;
     /*border: none;*/
-    color: #FFF;
+    color: #F6FAEF;
+}
+.header .pure-menu .pure-menu-selected a {
+    color: #F6FAEF;
 }
 .header .pure-menu .pure-menu-open {
     background-color: #8BC541;
 }
+.header .pure-menu-heading {
+    color: #F6FAEF;
+}
 #menu-container {
     z-index: 999 !important;
-    border-bottom: 2px solid #8BC541;
+    background: #8BC541;
+    border: 0;
 }
 body .primary-button {
     background: #8BC541;
-    color: #fff;
+    color: #F6FAEF;
 }
 .splash {
-    margin: 2em auto 0;
-    padding: 3em 0.5em;
+    margin: 3.4em auto 0;
+    padding: 0 0.5em;
     background: #eee;
+    border-bottom: 1px solid #D1E2BB;
+}
+.splash-main {
+    box-shadow: 1px -3px 4px 0px #000;
+    z-index: 0;
+    background: url('http://p1.pichost.me/i/11/1344899.jpg');
+}
+.splash-side {
+    border-left: 1px solid #D1E2BB;
+    border-bottom: 1px solid #D1E2BB;
+    padding: 0;
+    color: #969696;
+    background: #393836;
 }
 .splash .splash-head {
     font-size: 300%;
@@ -1712,12 +1681,31 @@ body .primary-button {
     line-height: 1.2em;
 }
 .splash .splash-subhead {
-    color: #999;
-    font-weight: 300;
+    color: #000;
+    font-weight: 200;
     line-height: 1.4em;
 }
 .splash .primary-button {
     font-size: 150%;
+    margin: 1.1em 0;
+}
+.splash-card {
+    margin-bottom: 15px;
+}
+.splash-card h3 {
+    font-weight: 200;
+    color: #FEFEFE;
+    background: #292929;
+    margin: 0;
+    padding: 0.5em 1em;
+    border-bottom: 2px solid #C9BB55;
+}
+.splash-card-content {
+    padding: 0.5em 1em;
+}
+
+.content {
+    background: #F5F5F5;
 }
 .content .content-subhead {
     color: #999;
@@ -1748,15 +1736,12 @@ body .primary-button {
     padding: 1em;
     font-size: 80%;
 }
-.util-center {
-    text-align: center;
-}
 .roundabout-holder {
     list-style: none;
     padding: 0;
     margin: 0;
     height: 350px;
-    width: 100%;
+    width: 48%;
     display: inline-block;
 }
 .roundabout-moveable-item {
@@ -1770,9 +1755,30 @@ body .primary-button {
     cursor: auto;
 }
 
+.schedule-table td {
+    padding: 6px 12px;
+    color: #969696;
+}
+.schedule-table>tr>td {
+    padding-right: 30px;
+}
+.schedule-table td div {
+    border: 1px solid #969696;
+    border-radius: 12px;
+    text-align: center;
+    padding: 1px 6px;
+}
+#map_canvas {
+    width: 100%;
+    height: 165px;
+}
+
 /**
  * Utility
  */
+.util-center {
+    text-align: center;
+}
 .invisible {
     visibility: hidden;
 }
@@ -1786,7 +1792,7 @@ body .primary-button {
     height: 0; 
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 5px solid #565d64;
+    border-top: 5px solid #F6FAEF;
     vertical-align: middle;
 }
 /**
@@ -1802,7 +1808,7 @@ ul.dropdown li {
 ul.dropdown li a {
 	display: block;
 	padding: 4px 8px;
-	color: #565d64;
+	color: #F6FAEF;
 }
 ul.dropdown li:last-child a {
 	border-right: none;
@@ -1821,10 +1827,11 @@ ul.dropdown ul {
 	position: absolute;
 	top: 100%;
 	left: 0;
+	box-shadow: 0px 2px 5px -1px #5A644F;
 }
 ul.dropdown ul li {
 	font-weight: normal;
-	background: #f6f6f6;
+	background: #F6FAEF;
 	float: none;
 }
 									  
@@ -1833,6 +1840,7 @@ ul.dropdown ul li a {
 	border-right: none; 
 	width: 100%; 
 	display: inline-block;
+	color: #0B1005;
 } 
 
 /**

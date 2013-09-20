@@ -11,7 +11,7 @@ ul.dropdown li {
 ul.dropdown li a {
 	display: block;
 	padding: 4px 8px;
-	color: #565d64;
+	color: #F6FAEF;
 }
 ul.dropdown li:last-child a {
 	border-right: none;
@@ -30,10 +30,11 @@ ul.dropdown ul {
 	position: absolute;
 	top: 100%;
 	left: 0;
+	box-shadow: 0px 2px 5px -1px #5A644F;
 }
 ul.dropdown ul li {
 	font-weight: normal;
-	background: #f6f6f6;
+	background: #F6FAEF;
 	float: none;
 }
 									  
@@ -42,6 +43,7 @@ ul.dropdown ul li a {
 	border-right: none; 
 	width: 100%; 
 	display: inline-block;
+	color: #0B1005;
 } 
 
 /**
