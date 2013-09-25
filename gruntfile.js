@@ -16,6 +16,7 @@ module.exports = function(grunt) {
 					'bower_components/jquery/jquery.js',
 					'bower_components/jquery-hoverIntent/jquery.hoverIntent.js',
 					'bower_components/roundabout/jquery.roundabout.js',
+					'bower_components/jquery.transit/jquery.transit.js',
 					'src/js/main.js',
 					'src/js/dropdown.js',
 					'src/js/init.js'
@@ -50,7 +51,8 @@ module.exports = function(grunt) {
 				src: [
 					'bower_components/pure/build/pure.css',
 					'src/css/main.css',
-					'src/css/dropdown.css'
+					'src/css/dropdown.css',
+					'src/css/responsive.nav.css'
 				],
 				dest: 'dist/<%= pkg.name %>.css'
 			},

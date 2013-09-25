@@ -1667,13 +1667,15 @@ body .primary-button {
     box-shadow: 1px -3px 4px 0px #000;
     z-index: 0;
     background: url('http://p1.pichost.me/i/11/1344899.jpg');
+    overflow: hidden;
+    position: relative;
 }
 .splash-side {
-    border-left: 1px solid #D1E2BB;
     border-bottom: 1px solid #D1E2BB;
     padding: 0;
     color: #969696;
     background: #393836;
+    min-width: 200px;
 }
 .splash .splash-head {
     font-size: 300%;
@@ -1684,14 +1686,25 @@ body .primary-button {
     color: #000;
     font-weight: 200;
     line-height: 1.4em;
+    padding-left: 0.5em;
 }
 .splash .primary-button {
     font-size: 150%;
     margin: 1.1em 0;
+    display: block;
+}
+
+.splash-info {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.splash-info .pure-u-1-5 {
+    min-width: 160px;
 }
 .splash-card {
     margin-bottom: 15px;
 }
+
 .splash-card h3 {
     font-weight: 200;
     color: #FEFEFE;
@@ -1773,6 +1786,20 @@ body .primary-button {
     height: 165px;
 }
 
+@media (max-width: 767px) {
+    .splash-info .primary-button,
+    .splash-info .splash-subhead {
+        margin: 0.3em 0;
+    }
+    .splash-side {
+        margin: 0;
+    }
+    .splash-main {
+        box-shadow: 1px 1px 4px 0px #000; /* move shadow below */
+        border: 0;
+    }
+}
+
 /**
  * Utility
  */
@@ -1852,4 +1879,66 @@ ul.dropdown ul ul {
 }
 ul.dropdown li:hover > ul { 
 	visibility: visible;
+}
+a.menu-link[href="#menu"] {
+	display: none;
+	cursor: pointer;
+	float: right;
+	height: 32px;
+	width: 33px;
+	padding: 0.2em;
+	margin: 0 1em 0.4em 0;
+}
+
+.bar1, .bar2, .bar3 {
+	margin-top: 3px;
+	background: white;
+	width: 33px;
+	height: 4px;
+	position: absolute;
+	-webkit-transform: rotate(-180deg);
+	transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+	-o-transform: rotate(-180deg);
+}
+
+.bar2 {
+	margin-top: 13px;
+}
+.bar3 {
+	margin-top: 23px;
+
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+}
+
+@media (max-width: 767px) {
+
+	ul.dropdown#menu-items {
+		display: block;
+		height: 0;
+		overflow: hidden;
+		-webkit-transition: all 0.3s ease;  
+		-moz-transition: all 0.3s ease;
+		-ms-transition: all 0.3s ease;
+		-o-transition: all 0.3s ease;
+		transition: all 0.3s ease;
+	}
+	ul.dropdown.active#menu-items {
+		display: block;
+		height: 11em;
+	}
+	ul.dropdown#menu-items>li {
+		display: block;
+		visibility: hidden;
+		float: none;
+	}
+	ul.dropdown.active#menu-items>li {
+		visibility: visible;
+	}
+	a.menu-link[href="#menu"] {
+		display: block;
+	}
 }

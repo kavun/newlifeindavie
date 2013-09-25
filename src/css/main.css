@@ -56,13 +56,15 @@ body .primary-button {
     box-shadow: 1px -3px 4px 0px #000;
     z-index: 0;
     background: url('http://p1.pichost.me/i/11/1344899.jpg');
+    overflow: hidden;
+    position: relative;
 }
 .splash-side {
-    border-left: 1px solid #D1E2BB;
     border-bottom: 1px solid #D1E2BB;
     padding: 0;
     color: #969696;
     background: #393836;
+    min-width: 200px;
 }
 .splash .splash-head {
     font-size: 300%;
@@ -73,14 +75,25 @@ body .primary-button {
     color: #000;
     font-weight: 200;
     line-height: 1.4em;
+    padding-left: 0.5em;
 }
 .splash .primary-button {
     font-size: 150%;
     margin: 1.1em 0;
+    display: block;
+}
+
+.splash-info {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.splash-info .pure-u-1-5 {
+    min-width: 160px;
 }
 .splash-card {
     margin-bottom: 15px;
 }
+
 .splash-card h3 {
     font-weight: 200;
     color: #FEFEFE;
@@ -160,6 +173,20 @@ body .primary-button {
 #map_canvas {
     width: 100%;
     height: 165px;
+}
+
+@media (max-width: 767px) {
+    .splash-info .primary-button,
+    .splash-info .splash-subhead {
+        margin: 0.3em 0;
+    }
+    .splash-side {
+        margin: 0;
+    }
+    .splash-main {
+        box-shadow: 1px 1px 4px 0px #000; /* move shadow below */
+        border: 0;
+    }
 }
 
 /**

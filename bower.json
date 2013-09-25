@@ -19,6 +19,7 @@
     "roundabout": "2.4.2",
     "jquery-hoverIntent": "master",
     "pure": "0.3.0",
-    "jquery-galleria": "~1.2.9"
+    "jquery-galleria": "~1.2.9",
+    "jquery.transit": "~0.9.9"
   }
 }
