@@ -342,6 +342,13 @@ img {
     border: 0; /* 1 */
     -ms-interpolation-mode: bicubic; /* 2 */
 }
+.ministry-logo {
+    width: auto;
+    height: 500px;
+}
+p.example{
+    color: blue;
+}
 
 /**
  * Correct overflow displayed oddly in IE 9.
