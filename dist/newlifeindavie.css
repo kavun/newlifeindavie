@@ -346,9 +346,6 @@ img {
     width: auto;
     height: 500px;
 }
-p.example{
-    color: blue;
-}
 
 /**
  * Correct overflow displayed oddly in IE 9.
@@ -541,6 +538,10 @@ textarea {
 table {
     border-collapse: collapse;
     border-spacing: 0;
+}
+
+#logos .pure-u-1-5{
+    vertical-align: middle;
 }
 
 .pure-button {
