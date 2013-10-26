@@ -49,6 +49,7 @@ module.exports = function(grunt) {
 			},
 			cssMain: {
 				src: [
+					'src/css/vegur/vegur.css',
 					'bower_components/pure/build/pure.css',
 					'src/css/main.css',
 					'src/css/dropdown.css',
@@ -126,11 +127,31 @@ module.exports = function(grunt) {
 		},
 
 		watch: {
-			files: ['<%= jshint.files %>', 'src/css/*.css'],
+			files: ['<%= jshint.files %>', 'src/css/*'],
 			tasks: ['default']
+		},
+
+		copy: {
+			main: {
+				files: [
+					{expand: true, flatten: true, src: ['src/css/vegur/vegur*'], dest: 'dist/vegur', filter: 'isFile'} // includes files in path
+				]
+			}
+		},
+
+		imagemin: {
+			dynamic: {                         // Another target
+				files: [{
+					expand: true,                  // Enable dynamic expansion
+					cwd: 'src/',                   // Src matches are relative to this path
+					src: ['img/*.{png,jpg,gif}'],   // Actual patterns to match
+					dest: 'dist/'                  // Destination path prefix
+				}]
+			}
 		}
 
 	});
 
-	grunt.registerTask('default', ['clean', 'jshint', 'concat', 'uglify']);
+	grunt.registerTask('default', ['clean', 'jshint', 'concat', 'uglify', 'copy', 'imagemin']);
+	
 };

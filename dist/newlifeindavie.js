@@ -11944,6 +11944,9 @@ nl.roundy = $('.roundy').removeClass('invisible').roundabout({
 				"margin-top": "13px"
 			});
 			toggled++;
+			setTimeout(function () {
+				$('ul.dropdown#menu-items').css('overflow', 'visible');
+			}, 300);
 		} else {
 			$('.bar3').stop().transition({
 				rotate: "+=135",
@@ -11957,6 +11960,9 @@ nl.roundy = $('.roundy').removeClass('invisible').roundabout({
 				"margin-top": "23px"
 			});
 			toggled--;
+			setTimeout(function () {
+				$('ul.dropdown#menu-items').css('overflow', 'hidden');
+			}, 300);
 		}
 	});
 })();
