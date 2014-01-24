@@ -254,3 +254,6 @@ body .primary-button {
 	border-top: 5px solid #F6FAEF;
 	vertical-align: middle;
 }
+#map_canvas img {
+	max-width: none !important;
+}

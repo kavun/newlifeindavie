@@ -14,8 +14,12 @@ nl.roundy = $('.roundy').removeClass('invisible').roundabout({
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		panControl: false,
 		mapTypeControl: false,
-		zoomControl: false,
-		scaleControl: false
+		zoomControl: true,
+		zoomControlOptions: {
+			style: google.maps.ZoomControlStyle.SMALL
+		},
+		scaleControl: false,
+		draggable: false
 	};
 	var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
 	new google.maps.Geocoder().geocode({
@@ -23,9 +27,13 @@ nl.roundy = $('.roundy').removeClass('invisible').roundabout({
 	}, function(results, status) {
 		if (status === google.maps.GeocoderStatus.OK) {
 			map.setCenter(results[0].geometry.location);
-			new google.maps.Marker({
+			var marker = new google.maps.Marker({
 				map: map,
 				position: results[0].geometry.location
+			});
+
+			google.maps.event.addListener(marker, 'click', function() {
+				document.getElementById('directions').click();
 			});
 		}
 	});
