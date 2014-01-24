@@ -395,10 +395,6 @@ img {
     border: 0; /* 1 */
     -ms-interpolation-mode: bicubic; /* 2 */
 }
-.ministry-logo {
-    width: auto;
-    height: 500px;
-}
 
 /**
  * Correct overflow displayed oddly in IE 9.
@@ -591,10 +587,6 @@ textarea {
 table {
     border-collapse: collapse;
     border-spacing: 0;
-}
-
-#logos .pure-u-1-5{
-    vertical-align: middle;
 }
 
 .pure-button {
@@ -1684,6 +1676,15 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'VegurBold', Helvetica, Arial, sans-serif;
 }
+
+a {
+	color: #C9BB55;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
 .header {
 	font-family: 'VegurMedium';
 }
@@ -1694,7 +1695,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: 'VegurRegular';
 }
 
-.l-box {
+.padded {
 	padding: 1em;
 }
 .header {
@@ -1718,8 +1719,17 @@ h1, h2, h3, h4, h5, h6 {
 .header .pure-menu .pure-menu-open {
 	background-color: #8BC541;
 }
-.header .pure-menu-heading {
-	color: #F6FAEF;
+.header .pure-menu a.pure-menu-heading {
+	position: absolute;
+	height: 54px;
+	width: 6em;
+	top: 0;
+	left: 0;
+	border-right: 3px solid #C9BB55;
+	background: url('../src/img/favicon.ico') no-repeat center center, white;
+}
+.pure-menu ul.menu-items {
+	margin-left: 6em;
 }
 
 #menu-container {
@@ -1745,6 +1755,7 @@ body .primary-button {
 	max-height: 600px;
 	overflow: hidden;
 	position: relative;
+	max-width: calc(100% - 200px);
 }
 .splash-side {
 	border-bottom: 1px solid #D1E2BB;
@@ -1767,6 +1778,7 @@ body .primary-button {
 .splash .primary-button {
 	font-size: 150%;
 	margin: 1.1em 0;
+	padding: 0.5em 0;
 	display: block;
 }
 
@@ -1777,6 +1789,10 @@ body .primary-button {
 .splash-info .pure-u-1-5 {
 	min-width: 160px;
 }
+.splash-info .pure-u-4-5 {
+	max-width: calc(100% - 160px);
+}
+
 .splash-card {
 	margin-bottom: 15px;
 }
@@ -1824,6 +1840,7 @@ body .primary-button {
 	text-align: center;
 	padding: 1em;
 	font-size: 80%;
+	line-height: 1.5em;
 }
 .roundabout-holder {
 	list-style: none;
@@ -1993,32 +2010,45 @@ a.menu-link[href="#menu"] {
 	-o-transform: rotate(180deg);
 }
 
+ul.dropdown.menu-items {
+	-webkit-transition: all 0.3s ease;  
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
 @media (max-width: 767px) {
 
-	ul.dropdown#menu-items {
+	ul.dropdown.menu-items {
 		display: block;
 		height: 0;
 		overflow: hidden;
-		-webkit-transition: all 0.3s ease;  
-		-moz-transition: all 0.3s ease;
-		-ms-transition: all 0.3s ease;
-		-o-transition: all 0.3s ease;
-		transition: all 0.3s ease;
+		margin-top: 0;
+		margin-left: 0;
 	}
-	ul.dropdown.active#menu-items {
+	ul.dropdown.active.menu-items {
 		display: block;
 		height: 11em;
+		margin-top: 4em;
 	}
-	ul.dropdown#menu-items>li {
+	ul.dropdown.menu-items>li {
 		display: block;
 		visibility: hidden;
 		float: none;
 	}
-	ul.dropdown.active#menu-items>li {
+	ul.dropdown.active.menu-items>li {
 		visibility: visible;
 	}
 	a.menu-link[href="#menu"] {
 		display: block;
+	}
+	.splash-main {
+		max-width: 100%;
+		padding-bottom: 1em;
+	}
+	.splash-info .pure-u-4-5 {
+		max-width: 100%;
 	}
 }
 
@@ -2029,6 +2059,9 @@ a.menu-link[href="#menu"] {
 	}
 	.splash-head {
 		margin-top: 2em;
+	}
+	.splash-main {
+		padding-top: 1em;
 	}
 
 }

@@ -12,6 +12,15 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'VegurBold', Helvetica, Arial, sans-serif;
 }
+
+a {
+	color: #C9BB55;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
 .header {
 	font-family: 'VegurMedium';
 }
@@ -22,7 +31,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: 'VegurRegular';
 }
 
-.l-box {
+.padded {
 	padding: 1em;
 }
 .header {
@@ -46,8 +55,17 @@ h1, h2, h3, h4, h5, h6 {
 .header .pure-menu .pure-menu-open {
 	background-color: #8BC541;
 }
-.header .pure-menu-heading {
-	color: #F6FAEF;
+.header .pure-menu a.pure-menu-heading {
+	position: absolute;
+	height: 54px;
+	width: 6em;
+	top: 0;
+	left: 0;
+	border-right: 3px solid #C9BB55;
+	background: url('../src/img/favicon.ico') no-repeat center center, white;
+}
+.pure-menu ul.menu-items {
+	margin-left: 6em;
 }
 
 #menu-container {
@@ -73,6 +91,7 @@ body .primary-button {
 	max-height: 600px;
 	overflow: hidden;
 	position: relative;
+	max-width: calc(100% - 200px);
 }
 .splash-side {
 	border-bottom: 1px solid #D1E2BB;
@@ -95,6 +114,7 @@ body .primary-button {
 .splash .primary-button {
 	font-size: 150%;
 	margin: 1.1em 0;
+	padding: 0.5em 0;
 	display: block;
 }
 
@@ -105,6 +125,10 @@ body .primary-button {
 .splash-info .pure-u-1-5 {
 	min-width: 160px;
 }
+.splash-info .pure-u-4-5 {
+	max-width: calc(100% - 160px);
+}
+
 .splash-card {
 	margin-bottom: 15px;
 }
@@ -152,6 +176,7 @@ body .primary-button {
 	text-align: center;
 	padding: 1em;
 	font-size: 80%;
+	line-height: 1.5em;
 }
 .roundabout-holder {
 	list-style: none;

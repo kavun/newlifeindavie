@@ -43,6 +43,25 @@ module.exports = function(grunt) {
 				],
 				dest: 'dist/<%= pkg.name %>.simpleGallery.js'
 			},
+			jsSimple: {
+				src: [
+					'bower_components/jquery/jquery.js',
+					'bower_components/jquery-galleria/src/galleria.js',
+					'bower_components/jquery-galleria/src/plugins/flickr/galleria.flickr.js',
+					'bower_components/jquery-galleria/src/themes/classic/galleria.classic.js'
+				],
+				dest: 'dist/<%= pkg.name %>.simpleGalleryStandalone.js'
+			},
+			buildingProgressGallery: {
+				src: [
+					'bower_components/jquery/jquery.js',
+					'bower_components/jquery-galleria/src/galleria.js',
+					'bower_components/jquery-galleria/src/plugins/flickr/galleria.flickr.js',
+					'bower_components/jquery-galleria/src/themes/classic/galleria.classic.js',
+					'src/js/gallery.buildingprogress.js'
+				],
+				dest: 'dist/<%= pkg.name %>.gallery.buildingprogress.js'
+			},
 			cssIndex: {
 				src: ['bower_components/pure/build/pure.css'],
 				dest: 'dist/index.css'
@@ -84,6 +103,11 @@ module.exports = function(grunt) {
 			uglifySimpleGallery: {
 				files: {
 					'dist/<%= pkg.name %>.simpleGallery.min.js': ['<%= concat.jsSimpleGallery.dest %>']
+				}
+			},
+			uglifySimpleGalleryStandalone: {
+				files: {
+					'dist/<%= pkg.name %>.simpleGalleryStandalone.min.js': ['<%= concat.jsSimple.dest %>']
 				}
 			}
 		},
